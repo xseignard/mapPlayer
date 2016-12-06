@@ -1,0 +1,30 @@
+#!/bin/bash
+# /etc/init.d/mapPlayer
+
+### BEGIN INIT INFO
+# Provides:          mapPlayer
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts map player app
+# Description:       This service is used to start the map player app
+### END INIT INFO
+
+
+case "$1" in
+	start)
+		echo "Starting mapPlayer"
+		/home/pi/mapPlayer/bin/mapPlayer
+		;;
+	stop)
+		echo "Stopping mapPlayer"
+		killall mapPlayer
+		;;
+	*)
+		echo "Usage: /etc/init.d/mapPlayer start|stop"
+		exit 1
+		;;
+esac
+
+exit 0
